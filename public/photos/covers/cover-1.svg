@@ -1,0 +1,14 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="720" fill="#FAFAFA"/>
+  <path d="M0 520C180 360 420 280 720 280C940 280 1100 330 1200 430V720H0V520Z" fill="#09090B" fill-opacity="0.05"/>
+  <path d="M240 470C310 390 410 350 540 350C650 350 742 382 820 446C900 512 940 604 940 720H240V470Z" fill="#09090B" fill-opacity="0.06"/>
+  <text x="96" y="140" fill="#09090B" font-family="ui-sans-serif, system-ui, -apple-system" font-size="56" font-weight="750" letter-spacing="8">
+    PHOTOGRAPHY
+  </text>
+  <text x="98" y="206" fill="#4B5563" font-family="ui-sans-serif, system-ui, -apple-system" font-size="28" font-weight="600" letter-spacing="2">
+    Cosplay Portraits
+  </text>
+  <text x="96" y="630" fill="#09090B" font-family="ui-sans-serif, system-ui, -apple-system" font-size="44" font-weight="750">
+    2025 · SHANGHAI
+  </text>
+</svg>

@@ -1,0 +1,14 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="720" fill="#0A0A0B"/>
+  <path d="M0 540C180 380 420 300 720 300C940 300 1100 350 1200 450V720H0V540Z" fill="#FFFFFF" fill-opacity="0.08"/>
+  <path d="M180 500C250 420 360 380 510 380C640 380 748 414 835 482C920 550 962 634 970 720H180V500Z" fill="#FFFFFF" fill-opacity="0.06"/>
+  <text x="96" y="140" fill="#FAFAFA" font-family="ui-sans-serif, system-ui, -apple-system" font-size="56" font-weight="750" letter-spacing="8">
+    PHOTOGRAPHY
+  </text>
+  <text x="98" y="206" fill="#C9C9CF" font-family="ui-sans-serif, system-ui, -apple-system" font-size="28" font-weight="600" letter-spacing="2">
+    Cosplay Portraits
+  </text>
+  <text x="96" y="630" fill="#FAFAFA" font-family="ui-sans-serif, system-ui, -apple-system" font-size="44" font-weight="750">
+    2024 · HANGZHOU
+  </text>
+</svg>

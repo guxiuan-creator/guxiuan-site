@@ -1,3 +1,34 @@
+# GUXIUAN Personal Site
+
+极简个人网站（中文为主、英文点缀），包含：
+- Home / About / Photography / Notes / Contact
+- Notes：展示封面/标题/日期，点击跳转公众号原文（或外部视频链接）
+
+## 本地运行
+
+```bash
+npm install
+npm run dev
+```
+
+浏览器打开：`http://localhost:3000`（若端口被占用会自动变成 3001/3002）。
+
+## 如何更新 Notes（公众号文章目录）
+
+1. 把封面图放到：`public/notes/covers/`（推荐 WebP/JPG，也可 SVG）
+2. 在 `src/content/notes.ts` 新增一条记录：
+   - `title`：标题
+   - `date`：日期（YYYY-MM-DD）
+   - `url`：公众号文章链接
+   - `cover`：封面路径（例如 `/notes/covers/xxx.webp`）
+
+## 如何更新 Photography（摄影合集目录）
+
+1. 准备每个合集的封面图，放到：`public/photos/covers/`
+2. 在 `src/content/photography.ts` 增加一个 `album`
+
+> 下一步可以加合集详情页与筛选（按年份/地点/展会）。
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

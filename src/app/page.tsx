@@ -1,65 +1,164 @@
 import Image from "next/image";
+import Link from "next/link";
+import { AboutHero } from "@/components/AboutHero";
+import { NOTES } from "@/content/notes";
+import { ALBUMS } from "@/content/photography";
 
 export default function Home() {
+  const latestNotes = NOTES.slice(0, 3);
+  const latestShoots = [...ALBUMS]
+    .sort((a, b) => (a.date < b.date ? 1 : -1))
+    .slice(0, 3);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <div className="space-y-10">
+      <AboutHero
+        actions={
+          <div className="flex flex-wrap gap-3">
+            <Link
+              href="/about"
+              className="inline-flex h-10 items-center rounded-full bg-zinc-950 px-5 text-sm font-medium text-white transition hover:bg-zinc-900"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              About / 关于我
+            </Link>
+            <Link
+              href="/notes"
+              className="inline-flex h-10 items-center rounded-full border border-zinc-950/15 bg-white px-5 text-sm font-medium text-zinc-900 transition hover:bg-zinc-50"
             >
-              Learning
-            </a>{" "}
-            center.
+              Notes / 笔记
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex h-10 items-center rounded-full border border-zinc-950/15 bg-white px-5 text-sm font-medium text-zinc-900 transition hover:bg-zinc-50"
+            >
+              Contact / 联系
+            </Link>
+          </div>
+        }
+      />
+
+      <section className="py-2">
+        <div className="mx-auto w-full max-w-5xl text-center">
+          <p className="text-xs font-semibold tracking-[0.28em] text-zinc-500">
+            SLOGAN
+          </p>
+          <p className="mt-4 text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl">
+            <span className="bg-[linear-gradient(90deg,#0ea5e9,#6366f1,#0ea5e9)] bg-clip-text text-transparent">
+              Make Curiosity Great Again.
+            </span>
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      </section>
+
+      <section className="space-y-6 pb-6">
+        <div className="flex items-end justify-between gap-6">
+          <div className="space-y-2">
+            <p className="text-xs font-semibold tracking-[0.28em] text-zinc-500">
+              PHOTOGRAPHY
+            </p>
+            <h2 className="text-xl font-semibold tracking-tight text-zinc-950">
+              最近拍摄
+            </h2>
+          </div>
+          <Link
+            href="/photography"
+            className="inline-flex h-9 items-center rounded-full border border-zinc-950/15 bg-white px-4 text-sm font-medium text-zinc-900 transition hover:bg-zinc-50"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            查看全部 →
+          </Link>
         </div>
-      </main>
+
+        <div className="grid gap-6 sm:grid-cols-3">
+          {latestShoots.slice(0, 3).map((album) => (
+            <Link
+              key={album.slug}
+              href={`/photography/${album.slug}`}
+              className="group block overflow-hidden rounded-3xl border border-zinc-950/10 bg-white transition hover:-translate-y-0.5 hover:border-zinc-950/15 hover:shadow-[0_22px_70px_-55px_rgba(0,0,0,0.55)]"
+            >
+              <div className="relative aspect-[16/10] w-full overflow-hidden bg-zinc-950/5">
+                <Image
+                  src={album.cover}
+                  alt={album.title}
+                  fill
+                  unoptimized
+                  className="object-cover transition duration-700 group-hover:scale-[1.02]"
+                />
+                <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,transparent_55%,rgba(0,0,0,0.45))] opacity-0 transition duration-300 group-hover:opacity-100" />
+                <div className="pointer-events-none absolute bottom-4 left-5 right-5 flex items-end justify-between gap-4 opacity-0 transition duration-300 group-hover:opacity-100">
+                  <div className="min-w-0">
+                    <p className="truncate text-sm font-semibold text-white">
+                      {album.title}
+                    </p>
+                    <p className="mt-1 text-xs text-white/80">
+                      {album.year} · {album.location}
+                    </p>
+                  </div>
+                  <span className="shrink-0 rounded-full border border-white/20 bg-black/20 px-3 py-1 text-xs font-semibold tracking-[0.18em] text-white/90 backdrop-blur">
+                    OPEN →
+                  </span>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="space-y-6">
+        <div className="flex items-end justify-between gap-6">
+          <div className="space-y-2">
+            <p className="text-xs font-semibold tracking-[0.28em] text-zinc-500">
+              NOTES
+            </p>
+            <h2 className="text-xl font-semibold tracking-tight text-zinc-950">
+              笔记（最近）
+            </h2>
+          </div>
+          <Link
+            href="/notes"
+            className="inline-flex h-9 items-center rounded-full border border-zinc-950/15 bg-white px-4 text-sm font-medium text-zinc-900 transition hover:bg-zinc-50"
+          >
+            阅读全部 →
+          </Link>
+        </div>
+
+        <div className="space-y-4">
+          {latestNotes.map((item) => (
+            <a
+              key={item.url}
+              href={item.url}
+              target="_blank"
+              rel="noreferrer"
+              className="group flex flex-col overflow-hidden rounded-3xl border border-zinc-950/10 bg-white transition hover:-translate-y-0.5 hover:border-zinc-950/15 hover:shadow-[0_22px_70px_-55px_rgba(0,0,0,0.55)] sm:flex-row"
+            >
+              <div className="relative aspect-[16/9] w-full overflow-hidden bg-zinc-950/5 sm:aspect-auto sm:w-[260px] sm:shrink-0">
+                <Image
+                  src={item.cover}
+                  alt=""
+                  fill
+                  unoptimized
+                  className="object-cover transition duration-700 group-hover:scale-[1.02]"
+                />
+              </div>
+              <div className="flex flex-1 flex-col justify-between gap-3 p-5">
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="text-xs font-semibold tracking-[0.22em] text-zinc-500">
+                      {item.type === "article" ? "ARTICLE" : "VIDEO"}
+                    </span>
+                    <time className="text-xs text-zinc-500">{item.date}</time>
+                  </div>
+                  <p className="text-base font-semibold leading-7 text-zinc-950">
+                    {item.title}
+                  </p>
+                  <p className="text-sm leading-6 text-zinc-600">
+                    跳转阅读 →
+                  </p>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

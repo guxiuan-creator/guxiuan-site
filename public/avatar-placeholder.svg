@@ -1,0 +1,19 @@
+<svg width="1200" height="1200" viewBox="0 0 1200 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="1200" fill="#0A0A0B"/>
+  <path d="M0 720C180 520 420 420 720 420C940 420 1100 490 1200 610V1200H0V720Z" fill="#FFFFFF" fill-opacity="0.08"/>
+  <path d="M120 720C230 600 370 540 540 540C690 540 816 590 920 690C1020 786 1070 960 1080 1200H120V720Z" fill="#FFFFFF" fill-opacity="0.06"/>
+  <circle cx="860" cy="330" r="140" fill="#FFFFFF" fill-opacity="0.10"/>
+  <circle cx="860" cy="330" r="64" fill="#FFFFFF" fill-opacity="0.14"/>
+  <text x="96" y="176" fill="#FAFAFA" font-family="ui-sans-serif, system-ui, -apple-system" font-size="64" font-weight="750" letter-spacing="10">
+    AVATAR
+  </text>
+  <text x="98" y="248" fill="#C9C9CF" font-family="ui-sans-serif, system-ui, -apple-system" font-size="30" font-weight="600" letter-spacing="2">
+    Replace this file with your photo
+  </text>
+  <text x="96" y="1040" fill="#FAFAFA" font-family="ui-sans-serif, system-ui, -apple-system" font-size="48" font-weight="750">
+    GUXIUAN
+  </text>
+  <text x="96" y="1098" fill="#C9C9CF" font-family="ui-sans-serif, system-ui, -apple-system" font-size="26">
+    Product · Interaction Design · AI
+  </text>
+</svg>
