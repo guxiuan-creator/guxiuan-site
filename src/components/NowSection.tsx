@@ -22,8 +22,9 @@ export function NowSection({ cards }: { cards: NowCard[] }) {
           <div
             key={c.id}
             className={[
-              "group relative overflow-hidden rounded-[28px] border bg-white p-7 transition",
+              "group relative overflow-hidden rounded-[28px] border border-zinc-950/10 bg-white p-7 transition",
               "hover:shadow-[0_18px_60px_-50px_rgba(0,0,0,0.55)]",
+              "dark:border-white/10 dark:bg-zinc-950/60 dark:hover:bg-zinc-950/70 dark:hover:shadow-none",
               c.id === "game"
                 ? "border-indigo-500/20 hover:border-indigo-500/28"
                 : c.id === "learning"
@@ -56,7 +57,7 @@ export function NowSection({ cards }: { cards: NowCard[] }) {
                 <p className="text-lg font-semibold leading-7 text-foreground">
                   {c.title}
                 </p>
-                <div className="grid size-12 shrink-0 place-items-center rounded-2xl border border-zinc-950/10 bg-white/70 backdrop-blur">
+                <div className="grid size-12 shrink-0 place-items-center rounded-2xl border border-zinc-950/10 bg-white/70 backdrop-blur dark:border-white/10 dark:bg-zinc-950/60">
                   <NowIcon id={c.id} />
                 </div>
               </div>
@@ -68,7 +69,7 @@ export function NowSection({ cards }: { cards: NowCard[] }) {
               ) : null}
 
               <div className="pt-2">
-                <span className="inline-flex items-center rounded-full border border-zinc-950/10 bg-white px-3 py-1 text-[11px] font-semibold tracking-[0.18em] text-zinc-700">
+                <span className="inline-flex items-center rounded-full border border-zinc-950/10 bg-white px-3 py-1 text-[11px] font-semibold tracking-[0.18em] text-zinc-700 dark:border-white/10 dark:bg-zinc-950/60 dark:text-white/75">
                   {c.id === "game"
                     ? "PLAY MODE"
                     : c.id === "learning"

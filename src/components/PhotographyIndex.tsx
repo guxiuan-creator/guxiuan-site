@@ -40,24 +40,24 @@ export function PhotographyIndex({ albums }: { albums: PhotoAlbum[] }) {
     <section className="space-y-6">
       <div className="space-y-3">
         <label className="block">
-          <span className="text-xs font-semibold tracking-[0.28em] text-zinc-500">
+          <span className="text-xs font-semibold tracking-[0.28em] text-zinc-500 dark:text-white/60">
             SEARCH
           </span>
-          <div className="mt-2 flex items-center gap-3 rounded-2xl border border-zinc-950/12 bg-white px-4 py-3 shadow-[0_18px_55px_-50px_rgba(0,0,0,0.40)]">
-            <span className="text-sm text-zinc-400" aria-hidden="true">
+          <div className="mt-2 flex items-center gap-3 rounded-2xl border border-zinc-950/12 bg-white px-4 py-3 shadow-[0_18px_55px_-50px_rgba(0,0,0,0.40)] dark:border-white/10 dark:bg-zinc-950/60 dark:shadow-none">
+            <span className="text-sm text-zinc-400 dark:text-white/45" aria-hidden="true">
               ⌕
             </span>
             <input
               value={q}
               onChange={(e) => setQ(e.target.value)}
               placeholder="搜索合集（年份 / 地点 / 展会）"
-              className="w-full bg-transparent text-sm text-zinc-900 outline-none placeholder:text-zinc-400"
+              className="w-full bg-transparent text-sm text-zinc-900 outline-none placeholder:text-zinc-400 dark:text-white/85 dark:placeholder:text-white/35"
             />
             {q ? (
               <button
                 type="button"
                 onClick={() => setQ("")}
-                className="rounded-full border border-zinc-950/10 bg-white px-3 py-1 text-xs font-semibold tracking-[0.18em] text-zinc-700 hover:bg-zinc-50"
+                className="rounded-full border border-zinc-950/10 bg-white px-3 py-1 text-xs font-semibold tracking-[0.18em] text-zinc-700 hover:bg-zinc-50 dark:border-white/12 dark:bg-zinc-950/60 dark:text-white/75 dark:hover:bg-zinc-950/70"
               >
                 CLEAR
               </button>
@@ -65,7 +65,7 @@ export function PhotographyIndex({ albums }: { albums: PhotoAlbum[] }) {
           </div>
         </label>
 
-        <p className="text-xs text-zinc-500">
+        <p className="text-xs text-zinc-500 dark:text-white/55">
           {filtered.length} / {albums.length}
         </p>
       </div>
@@ -75,7 +75,7 @@ export function PhotographyIndex({ albums }: { albums: PhotoAlbum[] }) {
           <li key={album.slug}>
             <Link
               href={`/photography/${album.slug}`}
-              className="group block overflow-hidden rounded-[28px] border border-zinc-950/10 bg-white transition hover:-translate-y-0.5 hover:border-zinc-950/15 hover:shadow-[0_22px_70px_-55px_rgba(0,0,0,0.55)]"
+              className="group block overflow-hidden rounded-[28px] border border-zinc-950/10 bg-white transition hover:-translate-y-0.5 hover:border-zinc-950/15 hover:shadow-[0_22px_70px_-55px_rgba(0,0,0,0.55)] dark:border-white/10 dark:bg-zinc-950/60 dark:hover:bg-zinc-950/70 dark:hover:shadow-none"
             >
               <div className="relative aspect-[16/9] w-full overflow-hidden bg-zinc-950/5">
                 <Image
@@ -105,10 +105,10 @@ export function PhotographyIndex({ albums }: { albums: PhotoAlbum[] }) {
               </div>
 
               <div className="flex items-center justify-between px-5 py-4">
-                <span className="text-xs font-semibold tracking-[0.28em] text-zinc-500">
+                <span className="text-xs font-semibold tracking-[0.28em] text-zinc-500 dark:text-white/60">
                   ALBUM
                 </span>
-                <span className="text-xs text-zinc-500">
+                <span className="text-xs text-zinc-500 dark:text-white/55">
                   {album.count ? `${album.count} photos` : ""}
                 </span>
               </div>
@@ -122,7 +122,7 @@ export function PhotographyIndex({ albums }: { albums: PhotoAlbum[] }) {
           <button
             type="button"
             onClick={() => setExpanded(true)}
-            className="w-full rounded-[28px] border border-zinc-950/12 bg-white px-6 py-5 text-sm font-semibold tracking-[0.18em] text-zinc-900 shadow-[0_22px_70px_-55px_rgba(0,0,0,0.55)] transition hover:-translate-y-0.5 hover:bg-zinc-50"
+            className="w-full rounded-[28px] border border-zinc-950/12 bg-white px-6 py-5 text-sm font-semibold tracking-[0.18em] text-zinc-900 shadow-[0_22px_70px_-55px_rgba(0,0,0,0.55)] transition hover:-translate-y-0.5 hover:bg-zinc-50 dark:border-white/10 dark:bg-zinc-950/60 dark:text-white/85 dark:hover:bg-zinc-950/70 dark:shadow-none"
           >
             阅读更多
           </button>

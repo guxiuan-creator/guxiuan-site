@@ -21,13 +21,13 @@ export default function Home() {
             </Link>
             <Link
               href="/notes"
-              className="inline-flex h-10 items-center rounded-full border border-zinc-950/15 bg-white px-5 text-sm font-medium text-zinc-900 transition hover:bg-zinc-50"
+              className="inline-flex h-10 items-center rounded-full border border-zinc-950/15 bg-white px-5 text-sm font-medium text-zinc-900 transition hover:bg-zinc-50 dark:border-white/12 dark:bg-zinc-950/60 dark:text-white/80 dark:hover:bg-zinc-950/70"
             >
               Notes / 笔记
             </Link>
             <Link
               href="/contact"
-              className="inline-flex h-10 items-center rounded-full border border-zinc-950/15 bg-white px-5 text-sm font-medium text-zinc-900 transition hover:bg-zinc-50"
+              className="inline-flex h-10 items-center rounded-full border border-zinc-950/15 bg-white px-5 text-sm font-medium text-zinc-900 transition hover:bg-zinc-50 dark:border-white/12 dark:bg-zinc-950/60 dark:text-white/80 dark:hover:bg-zinc-950/70"
             >
               Contact / 联系
             </Link>
@@ -60,7 +60,7 @@ export default function Home() {
           </div>
           <Link
             href="/photography"
-            className="inline-flex h-9 items-center rounded-full border border-zinc-950/15 bg-white px-4 text-sm font-medium text-zinc-900 transition hover:bg-zinc-50"
+            className="inline-flex h-9 items-center rounded-full border border-zinc-950/15 bg-white px-4 text-sm font-medium text-zinc-900 transition hover:bg-zinc-50 dark:border-white/12 dark:bg-zinc-950/60 dark:text-white/80 dark:hover:bg-zinc-950/70"
           >
             查看全部 →
           </Link>
@@ -71,7 +71,7 @@ export default function Home() {
             <Link
               key={album.slug}
               href={`/photography/${album.slug}`}
-              className="group block overflow-hidden rounded-3xl border border-zinc-950/10 bg-white transition hover:-translate-y-0.5 hover:border-zinc-950/15 hover:shadow-[0_22px_70px_-55px_rgba(0,0,0,0.55)]"
+              className="group block overflow-hidden rounded-3xl border border-zinc-950/10 bg-white transition hover:-translate-y-0.5 hover:border-zinc-950/15 hover:shadow-[0_22px_70px_-55px_rgba(0,0,0,0.55)] dark:border-white/10 dark:bg-zinc-950/60 dark:hover:bg-zinc-950/70 dark:hover:shadow-none"
             >
               <div className="relative aspect-[16/10] w-full overflow-hidden bg-zinc-950/5">
                 <Image
@@ -113,7 +113,7 @@ export default function Home() {
           </div>
           <Link
             href="/notes"
-            className="inline-flex h-9 items-center rounded-full border border-zinc-950/15 bg-white px-4 text-sm font-medium text-zinc-900 transition hover:bg-zinc-50"
+            className="inline-flex h-9 items-center rounded-full border border-zinc-950/15 bg-white px-4 text-sm font-medium text-zinc-900 transition hover:bg-zinc-50 dark:border-white/12 dark:bg-zinc-950/60 dark:text-white/80 dark:hover:bg-zinc-950/70"
           >
             阅读全部 →
           </Link>
@@ -126,9 +126,9 @@ export default function Home() {
               href={item.url}
               target="_blank"
               rel="noreferrer"
-              className="group flex flex-col overflow-hidden rounded-3xl border border-zinc-950/10 bg-white transition hover:-translate-y-0.5 hover:border-zinc-950/15 hover:shadow-[0_22px_70px_-55px_rgba(0,0,0,0.55)] sm:flex-row"
+              className="group flex flex-col overflow-hidden rounded-3xl border border-zinc-950/10 bg-white transition hover:-translate-y-0.5 hover:border-zinc-950/15 hover:shadow-[0_22px_70px_-55px_rgba(0,0,0,0.55)] dark:border-white/10 dark:bg-zinc-950/60 dark:hover:bg-zinc-950/70 dark:hover:shadow-none sm:flex-row"
             >
-              <div className="relative aspect-[16/9] w-full overflow-hidden bg-zinc-950/5 sm:aspect-auto sm:w-[260px] sm:shrink-0">
+              <div className="relative aspect-[16/9] w-full overflow-hidden bg-zinc-950/5 dark:bg-white/5 sm:aspect-auto sm:w-[260px] sm:shrink-0">
                 <Image
                   src={item.cover}
                   alt=""
