@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { PageHeader } from "@/components/PageHeader";
-import { ALBUMS } from "@/content/photography";
+import { getAlbumBySlug } from "@/content/photography.server";
 
 export default async function AlbumPage({
   params,
@@ -8,7 +8,7 @@ export default async function AlbumPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const album = ALBUMS.find((a) => a.slug === slug);
+  const album = getAlbumBySlug(slug);
   if (!album) return notFound();
 
   return (
@@ -26,7 +26,10 @@ export default async function AlbumPage({
       <PageHeader
         titleEn="Album"
         titleZh={album.title}
-        description={`${album.year} · ${album.location}${album.event ? ` · ${album.event}` : ""}`}
+        description={
+          album.subtitle ??
+          `${album.year} · ${album.location}${album.event ? ` · ${album.event}` : ""}`
+        }
       />
 
       <div className="columns-2 gap-4 sm:columns-3 [column-fill:_balance]">

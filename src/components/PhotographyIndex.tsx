@@ -92,8 +92,10 @@ export function PhotographyIndex({ albums }: { albums: PhotoAlbum[] }) {
                       {album.title}
                     </p>
                     <p className="mt-1 text-xs text-white/80">
-                      {album.year} · {album.location}
-                      {album.event ? ` · ${album.event}` : ""}
+                      {album.year} ·{" "}
+                      {album.subtitle
+                        ? album.subtitle
+                        : `${album.location}${album.event ? ` · ${album.event}` : ""}`}
                     </p>
                   </div>
                   <span className="shrink-0 rounded-full border border-white/20 bg-black/20 px-3 py-1 text-xs font-semibold tracking-[0.18em] text-white/90 backdrop-blur">
