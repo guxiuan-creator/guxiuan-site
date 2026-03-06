@@ -132,11 +132,11 @@ function FlipCard({
           }
         >
           <div
-            className="absolute inset-0 overflow-hidden rounded-[28px] border border-zinc-950/10 bg-white shadow-[0_22px_70px_-55px_rgba(0,0,0,0.55)] [backface-visibility:hidden]"
+            className="absolute inset-0 overflow-hidden rounded-[28px] border border-zinc-950/10 bg-white shadow-[0_22px_70px_-55px_rgba(0,0,0,0.55)] [backface-visibility:hidden] dark:border-white/10 dark:bg-zinc-950/60 dark:shadow-none"
             style={{ transform: "rotateY(0deg)" }}
           >
             <div className="relative h-full w-full">
-              <div className="absolute inset-0 bg-[radial-gradient(24rem_16rem_at_30%_0%,rgba(0,0,0,0.06),transparent_60%)]" />
+              <div className="absolute inset-0 bg-[radial-gradient(24rem_16rem_at_30%_0%,rgba(0,0,0,0.06),transparent_60%)] dark:bg-[radial-gradient(24rem_16rem_at_30%_0%,rgba(255,255,255,0.10),transparent_60%)]" />
               <Image
                 src={siteConfig.avatarSrc}
                 alt="Avatar"
@@ -148,7 +148,7 @@ function FlipCard({
           </div>
 
           <div
-            className="absolute inset-0 overflow-hidden rounded-[28px] border border-zinc-950/10 bg-zinc-950 text-white shadow-[0_22px_70px_-55px_rgba(0,0,0,0.60)] [backface-visibility:hidden]"
+            className="absolute inset-0 overflow-hidden rounded-[28px] border border-white/10 bg-zinc-950 text-white shadow-[0_22px_70px_-55px_rgba(0,0,0,0.60)] [backface-visibility:hidden]"
             style={{ transform: "rotateY(180deg)" }}
           >
             <div className="absolute inset-0 opacity-80">

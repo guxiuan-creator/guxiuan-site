@@ -70,7 +70,7 @@ export default function Home() {
           {latestShoots.slice(0, 3).map((album) => (
             <Link
               key={album.slug}
-              href={`/photography/${album.slug}`}
+              href={`/photography/${album.slug}?from=home`}
               className="group block overflow-hidden rounded-3xl border border-zinc-950/10 bg-white transition hover:-translate-y-0.5 hover:border-zinc-950/15 hover:shadow-[0_22px_70px_-55px_rgba(0,0,0,0.55)] dark:border-white/10 dark:bg-zinc-950/60 dark:hover:bg-zinc-950/70 dark:hover:shadow-none"
             >
               <div className="relative aspect-[16/10] w-full overflow-hidden bg-zinc-950/5">

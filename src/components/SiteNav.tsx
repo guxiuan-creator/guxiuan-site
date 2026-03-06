@@ -18,10 +18,6 @@ export function SiteNav() {
   const pathname = usePathname();
 
   useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
-
-  useEffect(() => {
     if (!open) return;
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
@@ -103,6 +99,7 @@ export function SiteNav() {
                     labelEn={item.labelEn}
                     labelZh={item.labelZh}
                     active={pathname === item.href}
+                    onNavigate={() => setOpen(false)}
                   />
                 ))}
               </nav>
@@ -119,16 +116,19 @@ function MobileNavItem({
   labelEn,
   labelZh,
   active,
+  onNavigate,
 }: {
   href: string;
   labelEn: string;
   labelZh: string;
   active: boolean;
+  onNavigate?: () => void;
 }) {
   return (
     <Link
       href={href}
       aria-current={active ? "page" : undefined}
+      onClick={onNavigate}
       className={[
         "flex w-full items-center justify-between rounded-2xl border px-4 py-4 transition",
         active

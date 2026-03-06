@@ -18,7 +18,6 @@ export function SloganTypewriter({
 
   useEffect(() => {
     if (reducedMotion) return;
-    setCount(0);
     const id = window.setInterval(() => {
       setCount((c) => {
         const next = c + 1;

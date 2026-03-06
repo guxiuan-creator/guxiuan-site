@@ -23,7 +23,6 @@ export function LifeDaysCounter({
   }, [birthISO]);
 
   useEffect(() => {
-    recompute();
     const id = setInterval(recompute, 60 * 60 * 1000);
     return () => clearInterval(id);
   }, [recompute]);

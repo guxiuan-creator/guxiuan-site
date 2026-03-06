@@ -8,7 +8,7 @@ export function HomeHero({ showCtas = true }: { showCtas?: boolean }) {
       <div className="space-y-5">
         <div className="space-y-3">
           <p className="text-xs font-semibold tracking-[0.28em] text-foreground/60">
-            HI, I'M
+            HI, I&apos;M
           </p>
           <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
             古秀安 <span className="text-foreground/40">/</span>{" "}
@@ -20,16 +20,16 @@ export function HomeHero({ showCtas = true }: { showCtas?: boolean }) {
         </div>
 
         <div className="flex flex-wrap items-center gap-2">
-          <span className="inline-flex items-center rounded-full border border-foreground/12 bg-background px-3 py-1 text-[11px] font-semibold tracking-[0.22em] text-foreground/75">
+          <span className="inline-flex items-center rounded-full border border-foreground/12 bg-foreground/5 px-3 py-1 text-[11px] font-semibold tracking-[0.22em] text-foreground/80">
             TOC PM
           </span>
-          <span className="inline-flex items-center rounded-full border border-foreground/12 bg-background px-3 py-1 text-[11px] font-semibold tracking-[0.22em] text-foreground/75">
+          <span className="inline-flex items-center rounded-full border border-foreground/12 bg-foreground/5 px-3 py-1 text-[11px] font-semibold tracking-[0.22em] text-foreground/80">
             MEng · 信息与交互设计
           </span>
-          <span className="inline-flex items-center rounded-full border border-foreground/12 bg-background px-3 py-1 text-[11px] font-semibold tracking-[0.22em] text-foreground/75">
+          <span className="inline-flex items-center rounded-full border border-foreground/12 bg-foreground/5 px-3 py-1 text-[11px] font-semibold tracking-[0.22em] text-foreground/80">
             AI
           </span>
-          <span className="inline-flex items-center rounded-full border border-foreground/12 bg-background px-3 py-1 text-[11px] font-semibold tracking-[0.22em] text-foreground/75">
+          <span className="inline-flex items-center rounded-full border border-foreground/12 bg-foreground/5 px-3 py-1 text-[11px] font-semibold tracking-[0.22em] text-foreground/80">
             VIBE CODING
           </span>
         </div>
