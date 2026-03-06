@@ -24,11 +24,11 @@ export function AvatarSticker() {
         <div className="space-y-4 p-6">
           <div className="flex items-start justify-between gap-6">
             <div className="space-y-1">
-              <p className="text-xs font-semibold tracking-[0.28em] text-zinc-500">
+              <p className="text-xs font-semibold tracking-[0.28em] text-foreground/60">
                 STICKER
               </p>
-              <p className="text-base font-semibold text-zinc-950">古秀安</p>
-              <p className="text-sm leading-6 text-zinc-600">
+              <p className="text-base font-semibold text-foreground">古秀安</p>
+              <p className="text-sm leading-6 text-foreground/70">
                 vibe coding 我踏马来了——但先把需求写清楚。
               </p>
             </div>
@@ -49,7 +49,7 @@ export function AvatarSticker() {
 
 function Tag({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-flex items-center rounded-full border border-zinc-950/10 bg-white px-3 py-1 text-[11px] font-semibold tracking-[0.22em] text-zinc-700">
+    <span className="inline-flex items-center rounded-full border border-foreground/12 bg-background px-3 py-1 text-[11px] font-semibold tracking-[0.22em] text-foreground/75">
       {children}
     </span>
   );

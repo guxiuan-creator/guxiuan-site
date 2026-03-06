@@ -19,7 +19,7 @@ export default function AboutPage() {
 
   const daysLine = (
     <div className="group w-full max-w-5xl py-3 text-center">
-      <p className="text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl">
+      <p className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
         在下驽钝，入得仙途已有{" "}
         <span className="relative inline-flex items-baseline">
           <span className="pointer-events-none absolute -inset-x-6 -inset-y-4 -z-10 opacity-0 blur-2xl transition duration-200 group-hover:opacity-100">

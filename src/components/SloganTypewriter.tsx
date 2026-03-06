@@ -37,10 +37,10 @@ export function SloganTypewriter({
   return (
     <section className="py-2">
       <div className="mx-auto w-full max-w-5xl text-center">
-        <p className="text-xs font-semibold tracking-[0.28em] text-zinc-500">
+        <p className="text-xs font-semibold tracking-[0.28em] text-foreground/60">
           SLOGAN
         </p>
-        <p className="mt-4 text-xl font-semibold leading-8 text-zinc-950 sm:text-2xl sm:leading-9">
+        <p className="mt-4 text-xl font-semibold leading-8 text-foreground sm:text-2xl sm:leading-9">
           <span className="bg-[linear-gradient(90deg,#0ea5e9,#6366f1,#0ea5e9)] bg-clip-text text-transparent">
             {shown}
           </span>
@@ -49,7 +49,7 @@ export function SloganTypewriter({
             className={[
               "ml-1 inline-block h-[1.2em] w-[2px] align-[-0.12em]",
               count < text.length
-                ? "bg-zinc-400 animate-[blink_1s_step-end_infinite]"
+                ? "bg-foreground/40 animate-[blink_1s_step-end_infinite]"
                 : "bg-transparent",
             ].join(" ")}
           />

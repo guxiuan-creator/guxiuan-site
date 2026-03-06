@@ -43,11 +43,11 @@ export function AboutHero({ actions }: { actions?: React.ReactNode }) {
     <section className="grid gap-10 pb-2 pt-2 sm:grid-cols-[1.2fr_0.8fr] sm:items-stretch">
       <div className="flex h-full flex-col gap-6">
         <div className="space-y-5">
-          <p className="text-xs font-semibold tracking-[0.28em] text-zinc-500">
+          <p className="text-xs font-semibold tracking-[0.28em] text-foreground/60">
             ABOUT ME
           </p>
 
-          <h1 className="text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl">
+          <h1 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
             欢迎大家来到{" "}
             <span className="bg-[linear-gradient(90deg,#0ea5e9,#6366f1,#0ea5e9)] bg-clip-text text-transparent">
               古秀安
@@ -55,14 +55,14 @@ export function AboutHero({ actions }: { actions?: React.ReactNode }) {
             的官方网站。
           </h1>
 
-          <p className="text-sm leading-6 text-zinc-600">
-            <span className="font-semibold tracking-[0.14em] text-zinc-800">
+          <p className="text-sm leading-6 text-foreground/70">
+            <span className="font-semibold tracking-[0.14em] text-foreground/85">
               GUXIUAN
             </span>{" "}
             · ToC PM · AI 应用 · 信息与交互设计
           </p>
 
-          <div className="space-y-3 text-sm leading-7 text-zinc-700">
+          <div className="space-y-3 text-sm leading-7 text-foreground/80">
             <p>
               欢迎大家来到古秀安的官方网站。这里没有“完美人设”，只有持续迭代。
             </p>
@@ -187,7 +187,7 @@ function FlipCard({
           </div>
         </div>
 
-        <p className="mt-3 text-center text-xs text-zinc-500 sm:hidden">
+        <p className="mt-3 text-center text-xs text-foreground/60 sm:hidden">
           点击翻面
         </p>
       </button>

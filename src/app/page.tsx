@@ -37,10 +37,10 @@ export default function Home() {
 
       <section className="py-2">
         <div className="mx-auto w-full max-w-5xl text-center">
-          <p className="text-xs font-semibold tracking-[0.28em] text-zinc-500">
+          <p className="text-xs font-semibold tracking-[0.28em] text-foreground/60">
             SLOGAN
           </p>
-          <p className="mt-4 text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl">
+          <p className="mt-4 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
             <span className="bg-[linear-gradient(90deg,#0ea5e9,#6366f1,#0ea5e9)] bg-clip-text text-transparent">
               Make Curiosity Great Again.
             </span>
@@ -51,10 +51,10 @@ export default function Home() {
       <section className="space-y-6 pb-6">
         <div className="flex items-end justify-between gap-6">
           <div className="space-y-2">
-            <p className="text-xs font-semibold tracking-[0.28em] text-zinc-500">
+            <p className="text-xs font-semibold tracking-[0.28em] text-foreground/60">
               PHOTOGRAPHY
             </p>
-            <h2 className="text-xl font-semibold tracking-tight text-zinc-950">
+            <h2 className="text-xl font-semibold tracking-tight text-foreground">
               最近拍摄
             </h2>
           </div>
@@ -104,10 +104,10 @@ export default function Home() {
       <section className="space-y-6">
         <div className="flex items-end justify-between gap-6">
           <div className="space-y-2">
-            <p className="text-xs font-semibold tracking-[0.28em] text-zinc-500">
+            <p className="text-xs font-semibold tracking-[0.28em] text-foreground/60">
               NOTES
             </p>
-            <h2 className="text-xl font-semibold tracking-tight text-zinc-950">
+            <h2 className="text-xl font-semibold tracking-tight text-foreground">
               笔记（最近）
             </h2>
           </div>
@@ -140,15 +140,15 @@ export default function Home() {
               <div className="flex flex-1 flex-col justify-between gap-3 p-5">
                 <div className="space-y-2">
                   <div className="flex items-center justify-between gap-3">
-                    <span className="text-xs font-semibold tracking-[0.22em] text-zinc-500">
+                    <span className="text-xs font-semibold tracking-[0.22em] text-foreground/60">
                       {item.type === "article" ? "ARTICLE" : "VIDEO"}
                     </span>
-                    <time className="text-xs text-zinc-500">{item.date}</time>
+                    <time className="text-xs text-foreground/60">{item.date}</time>
                   </div>
-                  <p className="text-base font-semibold leading-7 text-zinc-950">
+                  <p className="text-base font-semibold leading-7 text-foreground">
                     {item.title}
                   </p>
-                  <p className="text-sm leading-6 text-zinc-600">
+                  <p className="text-sm leading-6 text-foreground/70">
                     跳转阅读 →
                   </p>
                 </div>

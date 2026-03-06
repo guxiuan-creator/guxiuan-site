@@ -11,6 +11,10 @@ export const metadata: Metadata = {
     template: "%s · GUXIUAN",
   },
   description: "ToC 产品经理 · 信息与交互设计背景",
+  icons: {
+    icon: [{ url: "/favicon.png", type: "image/png", sizes: "32x32" }],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+  },
 };
 
 export default function RootLayout({

@@ -7,14 +7,14 @@ export function NowSection({ cards }: { cards: NowCard[] }) {
     <section className="space-y-5">
       <header className="flex flex-wrap items-end justify-between gap-3">
         <div className="space-y-2">
-          <p className="text-xs font-semibold tracking-[0.28em] text-zinc-500">
+          <p className="text-xs font-semibold tracking-[0.28em] text-foreground/60">
             NOW
           </p>
-          <h2 className="text-xl font-semibold tracking-tight text-zinc-950">
+          <h2 className="text-xl font-semibold tracking-tight text-foreground">
             最近在干什么
           </h2>
         </div>
-        <p className="text-sm text-zinc-600">三张卡片，记录最近的生活支线。</p>
+        <p className="text-sm text-foreground/70">三张卡片，记录最近的生活支线。</p>
       </header>
 
       <div className="grid gap-6 sm:grid-cols-3">
@@ -46,14 +46,14 @@ export function NowSection({ cards }: { cards: NowCard[] }) {
 
             <div className="relative space-y-3">
               <div className="flex items-center justify-between gap-3">
-                <span className="text-xs font-semibold tracking-[0.22em] text-zinc-500">
+                <span className="text-xs font-semibold tracking-[0.22em] text-foreground/60">
                   {c.labelEn}
                 </span>
-                <span className="text-xs text-zinc-500">{c.labelZh}</span>
+                <span className="text-xs text-foreground/60">{c.labelZh}</span>
               </div>
 
               <div className="flex items-start justify-between gap-4">
-                <p className="text-lg font-semibold leading-7 text-zinc-950">
+                <p className="text-lg font-semibold leading-7 text-foreground">
                   {c.title}
                 </p>
                 <div className="grid size-12 shrink-0 place-items-center rounded-2xl border border-zinc-950/10 bg-white/70 backdrop-blur">
@@ -62,7 +62,7 @@ export function NowSection({ cards }: { cards: NowCard[] }) {
               </div>
 
               {c.description ? (
-                <p className="text-sm leading-6 text-zinc-700">
+                <p className="text-sm leading-6 text-foreground/80">
                   {c.description}
                 </p>
               ) : null}
