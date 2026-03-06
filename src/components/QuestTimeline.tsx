@@ -1,5 +1,11 @@
 import { QuestNode } from "@/content/about";
 
+function formatMonth(date: string) {
+  const parts = date.split("-");
+  if (parts.length >= 2) return `${parts[0]}-${parts[1]}`;
+  return date;
+}
+
 export function QuestTimeline({
   titleEn,
   titleZh,
@@ -40,7 +46,7 @@ export function QuestTimeline({
                   <QuestIcon kind={node.icon} />
                 </div>
                 <time className="text-xs font-semibold tracking-[0.22em] text-zinc-500 sm:mt-3">
-                  {node.date}
+                  {formatMonth(node.date)}
                 </time>
               </div>
 

@@ -24,7 +24,7 @@ export function HomeHero({ showCtas = true }: { showCtas?: boolean }) {
             TOC PM
           </span>
           <span className="inline-flex items-center rounded-full border border-zinc-950/10 bg-white px-3 py-1 text-[11px] font-semibold tracking-[0.22em] text-zinc-700">
-            MSc · 信息与交互设计
+            MEng · 信息与交互设计
           </span>
           <span className="inline-flex items-center rounded-full border border-zinc-950/10 bg-white px-3 py-1 text-[11px] font-semibold tracking-[0.22em] text-zinc-700">
             AI

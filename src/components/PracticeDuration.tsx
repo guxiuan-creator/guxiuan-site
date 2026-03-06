@@ -42,13 +42,21 @@ function diffMonthsDays(startISO: string, now = new Date()) {
   const msDay = 24 * 60 * 60 * 1000;
   const days = Math.max(0, Math.floor((end.getTime() - anchor.getTime()) / msDay));
 
-  if (months <= 0) return days <= 0 ? "0 天" : `${days} 天`;
-  if (days <= 0) return `${months} 个月`;
-  return `${months} 个月 ${days} 天`;
+  return { months, days };
+}
+
+function formatApproxMonths({ months, days }: { months: number; days: number }) {
+  const approx = Math.max(0, months + days / 30);
+  const rounded = Math.round(approx * 10) / 10;
+  const text = Number.isInteger(rounded) ? String(rounded) : rounded.toFixed(1);
+  return `${text} 个月`;
 }
 
 export function PracticeDuration({ startISO }: { startISO: string }) {
-  const text = useMemo(() => diffMonthsDays(startISO), [startISO]);
+  const text = useMemo(
+    () => formatApproxMonths(diffMonthsDays(startISO)),
+    [startISO],
+  );
   return <span>{text}</span>;
 }
 

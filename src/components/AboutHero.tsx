@@ -12,7 +12,6 @@ const TAGS = [
   "写公众号",
   "做视频",
   "vibe coding",
-  "咖啡因",
   "散步",
   "AI 应用",
   "ToC PM",

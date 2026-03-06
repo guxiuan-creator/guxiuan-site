@@ -28,7 +28,7 @@ export const MAIN_QUEST: QuestNode[] = [
   },
   {
     id: "main-2025-06-job",
-    date: "2025-06-18",
+    date: "2025-06",
     sortDate: "2025-06-18",
     title: "入职：ToC AI 软件公司",
     meta: "AI 应用产品 · 持续到现在",

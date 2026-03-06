@@ -26,6 +26,12 @@ function compareDesc(a: AxisEvent, b: AxisEvent) {
   return ak < bk ? 1 : -1;
 }
 
+function formatMonth(date: string) {
+  const parts = date.split("-");
+  if (parts.length >= 2) return `${parts[0]}-${parts[1]}`;
+  return date;
+}
+
 export function QuestAxis({
   main,
   side,
@@ -43,14 +49,14 @@ export function QuestAxis({
   return (
     <section className="space-y-4">
       <header className="space-y-2">
-        <p className="text-xs font-semibold tracking-[0.28em] text-zinc-500">
+        <p className="text-xs font-semibold tracking-[0.28em] text-zinc-500 dark:text-white/60">
           QUEST MAP
         </p>
         <div className="flex flex-wrap items-end justify-between gap-3">
-          <h2 className="text-xl font-semibold tracking-tight text-zinc-950">
+          <h2 className="text-xl font-semibold tracking-tight text-zinc-950 dark:text-white">
             主线 / 支线任务轴
           </h2>
-          <p className="text-sm leading-6 text-zinc-600">
+          <p className="text-sm leading-6 text-zinc-600 dark:text-white/70">
             最近的在上面。主线更“厚重”，支线更“轻盈”。
           </p>
         </div>
@@ -63,28 +69,47 @@ export function QuestAxis({
 
       <ol className="space-y-5">
         {events.map((e) => (
-          <li
-            key={e.id}
-            className="grid gap-4 sm:grid-cols-[1fr_60px_1fr] sm:items-stretch"
-          >
-            <div className="min-h-[1px]">
-              {e.lane === "main" ? <MainCard node={e} /> : null}
-            </div>
+          <li key={e.id}>
+            {/* Mobile: 左边时间轴，右边事件 */}
+            <div className="grid grid-cols-[84px_1fr] gap-4 sm:hidden">
+              <div className="relative">
+                <div className="absolute left-4 top-0 h-full w-px bg-zinc-950/10 dark:bg-white/10" />
+                <div className="relative flex flex-col items-center gap-2 pt-2">
+                  <span className="grid size-8 place-items-center rounded-full border border-zinc-950/15 bg-white shadow-sm dark:border-white/15 dark:bg-zinc-950">
+                    <span className="size-2 rounded-full bg-zinc-950/80 dark:bg-white/80" />
+                  </span>
+                  <time className="text-[11px] font-semibold tracking-[0.18em] text-zinc-500 dark:text-white/60">
+                    {formatMonth(e.date)}
+                  </time>
+                </div>
+              </div>
 
-            <div className="relative hidden sm:block">
-              <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-zinc-950/10" />
-              <div className="sticky top-24 mx-auto flex w-[60px] flex-col items-center gap-2">
-                <span className="grid size-8 place-items-center rounded-full border border-zinc-950/15 bg-white shadow-sm">
-                  <span className="size-2 rounded-full bg-zinc-950/80" />
-                </span>
-                <time className="text-xs font-semibold tracking-[0.18em] text-zinc-500">
-                  {e.date}
-                </time>
+              <div className="min-h-[1px]">
+                {e.lane === "main" ? <MainCard node={e} /> : <SideCard node={e} />}
               </div>
             </div>
 
-            <div className="min-h-[1px]">
-              {e.lane === "side" ? <SideCard node={e} /> : null}
+            {/* Desktop: 左主线 / 中时间 / 右支线 */}
+            <div className="hidden gap-4 sm:grid sm:grid-cols-[1fr_60px_1fr] sm:items-stretch">
+              <div className="min-h-[1px]">
+                {e.lane === "main" ? <MainCard node={e} /> : null}
+              </div>
+
+              <div className="relative">
+                <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-zinc-950/10 dark:bg-white/10" />
+                <div className="sticky top-24 mx-auto flex w-[60px] flex-col items-center gap-2">
+                  <span className="grid size-8 place-items-center rounded-full border border-zinc-950/15 bg-white shadow-sm dark:border-white/15 dark:bg-zinc-950">
+                    <span className="size-2 rounded-full bg-zinc-950/80 dark:bg-white/80" />
+                  </span>
+                  <time className="text-xs font-semibold tracking-[0.18em] text-zinc-500 dark:text-white/60">
+                    {formatMonth(e.date)}
+                  </time>
+                </div>
+              </div>
+
+              <div className="min-h-[1px]">
+                {e.lane === "side" ? <SideCard node={e} /> : null}
+              </div>
             </div>
           </li>
         ))}
@@ -95,19 +120,23 @@ export function QuestAxis({
 
 function MainCard({ node }: { node: AxisEvent }) {
   return (
-    <div className="relative overflow-hidden rounded-3xl border border-zinc-950/15 bg-white p-5 shadow-[0_14px_45px_-36px_rgba(0,0,0,0.45)]">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(22rem_16rem_at_20%_0%,rgba(0,0,0,0.07),transparent_55%)]" />
+    <div className="relative overflow-hidden rounded-3xl border border-zinc-950/15 bg-white p-5 shadow-[0_14px_45px_-36px_rgba(0,0,0,0.45)] dark:border-white/12 dark:bg-zinc-950 dark:shadow-none">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(22rem_16rem_at_20%_0%,rgba(0,0,0,0.07),transparent_55%)] dark:bg-[radial-gradient(22rem_16rem_at_20%_0%,rgba(255,255,255,0.10),transparent_55%)]" />
       <div className="relative flex items-start gap-4">
         <div className="grid size-12 shrink-0 place-items-center rounded-2xl bg-zinc-950 text-white">
           <QuestIcon kind={node.icon} />
         </div>
         <div className="space-y-1">
-          <p className="text-xs font-semibold tracking-[0.22em] text-zinc-500">
+          <p className="text-xs font-semibold tracking-[0.22em] text-zinc-500 dark:text-white/60">
             MAIN QUEST
           </p>
-          <p className="text-base font-semibold text-zinc-950">{node.title}</p>
+          <p className="text-base font-semibold text-zinc-950 dark:text-white">
+            {node.title}
+          </p>
           {node.meta ? (
-            <p className="text-sm leading-6 text-zinc-600">{node.meta}</p>
+            <p className="text-sm leading-6 text-zinc-600 dark:text-white/70">
+              {node.meta}
+            </p>
           ) : null}
         </div>
       </div>
@@ -117,19 +146,23 @@ function MainCard({ node }: { node: AxisEvent }) {
 
 function SideCard({ node }: { node: AxisEvent }) {
   return (
-    <div className="relative overflow-hidden rounded-3xl border border-sky-500/18 bg-white p-5">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(22rem_16rem_at_80%_0%,rgba(14,165,233,0.12),transparent_55%)]" />
+    <div className="relative overflow-hidden rounded-3xl border border-sky-500/18 bg-white p-5 dark:border-sky-400/18 dark:bg-zinc-950">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(22rem_16rem_at_80%_0%,rgba(14,165,233,0.12),transparent_55%)] dark:bg-[radial-gradient(22rem_16rem_at_80%_0%,rgba(56,189,248,0.12),transparent_55%)]" />
       <div className="relative flex items-start gap-4">
-        <div className="grid size-12 shrink-0 place-items-center rounded-2xl bg-sky-500/10 text-sky-700">
+        <div className="grid size-12 shrink-0 place-items-center rounded-2xl bg-sky-500/10 text-sky-700 dark:bg-sky-400/15 dark:text-sky-200">
           <QuestIcon kind={node.icon} />
         </div>
         <div className="space-y-1">
-          <p className="text-xs font-semibold tracking-[0.22em] text-sky-700/80">
+          <p className="text-xs font-semibold tracking-[0.22em] text-sky-700/80 dark:text-sky-200/80">
             SIDE QUEST
           </p>
-          <p className="text-base font-semibold text-zinc-950">{node.title}</p>
+          <p className="text-base font-semibold text-zinc-950 dark:text-white">
+            {node.title}
+          </p>
           {node.meta ? (
-            <p className="text-sm leading-6 text-zinc-600">{node.meta}</p>
+            <p className="text-sm leading-6 text-zinc-600 dark:text-white/70">
+              {node.meta}
+            </p>
           ) : null}
         </div>
       </div>
