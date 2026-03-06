@@ -26,6 +26,19 @@ export const ALBUMS: PhotoAlbum[] = [
     photosDir: "/photos/albums/2026-zhengzhou-theater-newworld",
   },
   {
+    slug: "2025-wuhan-qingshan-park-mutual-portraits",
+    title: "2025.11.15 · 互勉人像",
+    subtitle: "Wuhan Qingshan Park · Mutual Portraits",
+    date: "2025-11-15",
+    year: 2025,
+    location: "武汉青山公园",
+    event: "互勉人像",
+    // 占位封面：当 photosDir 里有照片时，会自动用第一张当封面
+    cover: "/photos/covers/cover-1.svg",
+    photos: ["/photos/covers/cover-1.svg"],
+    photosDir: "/photos/albums/2025-wuhan-qingshan-park-mutual-portraits",
+  },
+  {
     slug: "2025-zhengzhou-cbd-newworld",
     title: "2025.2.3 · 新世界动漫展",
     subtitle: "Zhengzhou CBD · New World Anime Expo",

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { AvatarSticker } from "@/components/AvatarSticker";
+import { PracticeDuration } from "@/components/PracticeDuration";
 
 export function HomeHero({ showCtas = true }: { showCtas?: boolean }) {
   return (
@@ -14,7 +15,7 @@ export function HomeHero({ showCtas = true }: { showCtas?: boolean }) {
             <span className="tracking-[0.18em]">GUXIUAN</span>
           </h1>
           <p className="text-lg font-medium text-zinc-800">
-            练习时长 9 个月的产品经理
+            练习时长 <PracticeDuration startISO="2025-06-18" /> 的产品经理
           </p>
         </div>
 

@@ -19,8 +19,8 @@ export const MAIN_QUEST: QuestNode[] = [
   },
   {
     id: "main-2025-06-master",
-    date: "2025-06",
-    sortDate: "2025-06-01",
+    date: "2025-05",
+    sortDate: "2025-05-01",
     title: "硕士毕业",
     meta: "信息与交互设计",
     icon: "graduation",
@@ -28,8 +28,8 @@ export const MAIN_QUEST: QuestNode[] = [
   },
   {
     id: "main-2025-06-job",
-    date: "2026-06",
-    sortDate: "2026-06-18",
+    date: "2025-06-18",
+    sortDate: "2025-06-18",
     title: "入职：ToC AI 软件公司",
     meta: "AI 应用产品 · 持续到现在",
     icon: "company",
@@ -44,6 +44,15 @@ export const SIDE_QUEST: QuestNode[] = [
     title: "对摄影产生兴趣",
     meta: "开始认真看构图/光线",
     icon: "camera",
+  },
+  {
+    id: "side-2026-03-website",
+    date: "2026-03",
+    sortDate: "2026-03-05",
+    title: "guxiuan 官方网站诞生",
+    meta: "首次 vibe coding",
+    icon: "switch",
+    sortOrder: 0,
   },
   {
     id: "side-2021-10-nikon",
