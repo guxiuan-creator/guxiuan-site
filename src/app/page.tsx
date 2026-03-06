@@ -15,7 +15,7 @@ export default function Home() {
           <div className="flex flex-wrap gap-3">
             <Link
               href="/about"
-              className="inline-flex h-10 items-center rounded-full bg-zinc-950 px-5 text-sm font-medium text-white transition hover:bg-zinc-900"
+              className="inline-flex h-10 items-center rounded-full border border-zinc-950/15 bg-white px-5 text-sm font-medium text-zinc-900 transition hover:bg-zinc-50 dark:border-white/12 dark:bg-zinc-950/60 dark:text-white/80 dark:hover:bg-zinc-950/70"
             >
               About / 关于我
             </Link>
