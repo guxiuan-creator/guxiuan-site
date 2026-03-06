@@ -6,6 +6,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteNav } from "@/components/SiteNav";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://guxiuan.com"),
   title: {
     default: "GUXIUAN",
     template: "%s · GUXIUAN",
@@ -14,6 +15,20 @@ export const metadata: Metadata = {
   icons: {
     icon: [{ url: "/favicon.png", type: "image/png", sizes: "32x32" }],
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+  },
+  openGraph: {
+    type: "website",
+    url: "/",
+    siteName: "GUXIUAN",
+    title: "GUXIUAN",
+    description: "ToC 产品经理 · 信息与交互设计背景",
+    images: [{ url: "/og.png", width: 600, height: 600, alt: "GUXIUAN" }],
+  },
+  twitter: {
+    card: "summary",
+    title: "GUXIUAN",
+    description: "ToC 产品经理 · 信息与交互设计背景",
+    images: ["/og.png"],
   },
 };
 
