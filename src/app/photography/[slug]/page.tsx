@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { PageHeader } from "@/components/PageHeader";
+import { AlbumMasonry } from "@/components/AlbumMasonry";
 import { getAlbumBySlug } from "@/content/photography.server";
 
 export default async function AlbumPage({
@@ -39,27 +40,7 @@ export default async function AlbumPage({
         }
       />
 
-      <div className="columns-2 gap-4 sm:columns-3 [column-fill:_balance]">
-        {album.photos.map((src, idx) => (
-          <a
-            key={`${src}-${idx}`}
-            href={src}
-            target="_blank"
-            rel="noreferrer"
-            className="group mb-4 block break-inside-avoid overflow-hidden rounded-3xl border border-zinc-950/10 bg-zinc-950/5 dark:border-white/10 dark:bg-white/5"
-          >
-            {/* 用原始宽高形成瀑布流：横图/竖图都会自然排布 */}
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={src}
-              alt=""
-              loading="lazy"
-              decoding="async"
-              className="h-auto w-full transition duration-700 group-hover:scale-[1.01]"
-            />
-          </a>
-        ))}
-      </div>
+      <AlbumMasonry photos={album.photos} />
     </div>
   );
 }
