@@ -1,5 +1,6 @@
 export const siteConfig = {
   avatarSrc: "/avatar-portrait.png",
+  aboutAvatarSrc: "/avatar-about.png",
   marqueeItems: [
     "ToC 产品",
     "AI 应用",

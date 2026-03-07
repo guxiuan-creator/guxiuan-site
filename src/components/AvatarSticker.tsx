@@ -9,7 +9,7 @@ export function AvatarSticker() {
         <div className="relative aspect-square w-full overflow-hidden bg-zinc-950 text-white">
           <div className="absolute inset-0 bg-[radial-gradient(20rem_20rem_at_30%_10%,rgba(255,255,255,0.16),transparent_55%)]" />
           <Image
-            src={siteConfig.avatarSrc}
+            src={siteConfig.aboutAvatarSrc}
             alt="Avatar"
             fill
             unoptimized
