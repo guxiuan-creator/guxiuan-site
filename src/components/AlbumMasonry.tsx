@@ -39,9 +39,8 @@ export function AlbumMasonry({ photos }: { photos: AlbumPhoto[] }) {
               <div
                 aria-hidden="true"
                 className={[
-                  "absolute inset-0 transition-opacity duration-300",
+                  "skeleton-shimmer absolute inset-0 transition-opacity duration-300",
                   "bg-zinc-950/5 dark:bg-white/5",
-                  "animate-pulse",
                   isLoaded ? "opacity-0" : "opacity-100",
                 ].join(" ")}
               />
