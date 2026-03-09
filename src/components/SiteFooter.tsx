@@ -5,7 +5,7 @@ const NAV = [
   { href: "/about", labelEn: "ABOUT", labelZh: "关于我" },
   { href: "/photography", labelEn: "PHOTOGRAPHY", labelZh: "摄影" },
   { href: "/notes", labelEn: "NOTES", labelZh: "笔记" },
-  { href: "/contact", labelEn: "CONTACT", labelZh: "联系" },
+  { href: "/product", labelEn: "PRODUCT", labelZh: "产品" },
 ] as const;
 
 export function SiteFooter() {

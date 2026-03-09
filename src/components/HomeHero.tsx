@@ -57,10 +57,10 @@ export function HomeHero({ showCtas = true }: { showCtas?: boolean }) {
               Notes / 笔记
             </Link>
             <Link
-              href="/contact"
+              href="/product"
               className="inline-flex h-10 items-center rounded-full border border-foreground/15 bg-background px-5 text-sm font-medium text-foreground transition hover:bg-foreground/5"
             >
-              Contact / 联系
+              Product / 产品
             </Link>
           </div>
         ) : null}

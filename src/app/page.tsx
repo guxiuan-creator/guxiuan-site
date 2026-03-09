@@ -26,10 +26,10 @@ export default function Home() {
               Notes / 笔记
             </Link>
             <Link
-              href="/contact"
+              href="/product"
               className="inline-flex h-10 items-center rounded-full border border-zinc-950/15 bg-white px-5 text-sm font-medium text-zinc-900 transition hover:bg-zinc-50 dark:border-white/12 dark:bg-zinc-950/60 dark:text-white/80 dark:hover:bg-zinc-950/70"
             >
-              Contact / 联系
+              Product / 产品
             </Link>
           </div>
         }

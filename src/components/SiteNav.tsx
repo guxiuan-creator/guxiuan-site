@@ -3,111 +3,216 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { socialConfig } from "@/config/social";
 import { NavLink } from "@/components/ui/NavLink";
+import { CopyButton } from "@/components/ui/CopyButton";
 
 const NAV = [
   { href: "/", labelEn: "HOME", labelZh: "首页" },
   { href: "/about", labelEn: "ABOUT", labelZh: "关于我" },
   { href: "/photography", labelEn: "PHOTOGRAPHY", labelZh: "摄影" },
   { href: "/notes", labelEn: "NOTES", labelZh: "笔记" },
-  { href: "/contact", labelEn: "CONTACT", labelZh: "联系" },
+  { href: "/product", labelEn: "PRODUCT", labelZh: "产品" },
 ] as const;
 
 export function SiteNav() {
   const [open, setOpen] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
-    if (!open) return;
+    if (!open && !contactOpen) return;
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
       document.body.style.overflow = prev;
     };
-  }, [open]);
+  }, [open, contactOpen]);
+
+  useEffect(() => {
+    if (!contactOpen) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setContactOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [contactOpen]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-zinc-950/15 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/70 dark:border-white/10 dark:bg-zinc-950/70 supports-[backdrop-filter]:dark:bg-zinc-950/55">
-      <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-5 sm:px-8">
-        <Link href="/" className="group inline-flex items-baseline gap-3">
-          <span className="text-sm font-semibold tracking-[0.26em]">
-            GUXIUAN
-          </span>
-          <span className="hidden text-xs text-zinc-500 dark:text-white/60 sm:inline">
-            ToC PM
-          </span>
-        </Link>
+    <>
+      <header className="sticky top-0 z-50 border-b border-zinc-950/15 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/70 dark:border-white/10 dark:bg-zinc-950/70 supports-[backdrop-filter]:dark:bg-zinc-950/55">
+        <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-5 sm:px-8">
+          <Link href="/" className="group inline-flex items-baseline gap-3">
+            <span className="text-sm font-semibold tracking-[0.26em]">
+              GUXIUAN
+            </span>
+            <span className="hidden text-xs text-zinc-500 dark:text-white/60 sm:inline">
+              ToC PM
+            </span>
+          </Link>
 
-        <nav className="hidden items-center gap-6 sm:flex">
-          {NAV.map((item) => (
-            <NavLink key={item.href} href={item.href}>
-              <span className="text-xs font-semibold tracking-[0.24em]">
-                {item.labelEn}
-              </span>
-              <span className="ml-2 hidden text-xs text-zinc-500 sm:inline">
-                {item.labelZh}
-              </span>
-            </NavLink>
-          ))}
-        </nav>
+          <div className="hidden items-center gap-4 sm:flex">
+            <nav className="items-center gap-6 sm:flex">
+              {NAV.map((item) => (
+                <NavLink key={item.href} href={item.href}>
+                  <span className="text-xs font-semibold tracking-[0.24em]">
+                    {item.labelEn}
+                  </span>
+                  <span className="ml-2 hidden text-xs text-zinc-500 sm:inline">
+                    {item.labelZh}
+                  </span>
+                </NavLink>
+              ))}
+            </nav>
+            <button
+              type="button"
+              onClick={() => setContactOpen(true)}
+              className="inline-flex size-9 items-center justify-center rounded-full border border-zinc-950/12 bg-white text-zinc-700 transition hover:bg-zinc-50 dark:border-white/12 dark:bg-zinc-950 dark:text-white/80 dark:hover:bg-zinc-900"
+              aria-label="Open contact panel"
+            >
+              <MailIcon />
+            </button>
+          </div>
 
-        <button
-          type="button"
-          onClick={() => setOpen(true)}
-          className="inline-flex items-center rounded-full border border-zinc-950/10 bg-white px-4 py-2 text-xs font-semibold tracking-[0.22em] text-zinc-700 hover:bg-zinc-50 dark:border-white/12 dark:bg-zinc-950 dark:text-white/80 dark:hover:bg-zinc-900 sm:hidden"
-          aria-label="Open menu"
-        >
-          MENU
-        </button>
-      </div>
+          <div className="flex items-center gap-2 sm:hidden">
+            <button
+              type="button"
+              onClick={() => setContactOpen(true)}
+              className="inline-flex size-9 items-center justify-center rounded-full border border-zinc-950/12 bg-white text-zinc-700 transition hover:bg-zinc-50 dark:border-white/12 dark:bg-zinc-950 dark:text-white/80 dark:hover:bg-zinc-900"
+              aria-label="Open contact panel"
+            >
+              <MailIcon />
+            </button>
+            <button
+              type="button"
+              onClick={() => setOpen(true)}
+              className="inline-flex items-center rounded-full border border-zinc-950/10 bg-white px-4 py-2 text-xs font-semibold tracking-[0.22em] text-zinc-700 hover:bg-zinc-50 dark:border-white/12 dark:bg-zinc-950 dark:text-white/80 dark:hover:bg-zinc-900"
+              aria-label="Open menu"
+            >
+              MENU
+            </button>
+          </div>
+        </div>
 
-      {open ? (
-        <div className="fixed inset-0 z-50 sm:hidden">
+        {open ? (
+          <div className="fixed inset-0 z-50 sm:hidden">
+            <button
+              type="button"
+              aria-label="Close menu"
+              onClick={() => setOpen(false)}
+              className="absolute inset-0 bg-black/30"
+            />
+
+            <div className="absolute right-0 top-0 h-dvh w-[86%] max-w-sm border-l border-zinc-950/10 bg-white shadow-[0_30px_120px_-70px_rgba(0,0,0,0.65)]">
+              <div className="flex items-center justify-between border-b border-zinc-950/10 px-5 py-4 dark:border-white/10 dark:bg-zinc-950">
+                <div className="flex items-baseline gap-3">
+                  <span className="text-xs font-semibold tracking-[0.28em] text-zinc-500 dark:text-white/60">
+                    MENU
+                  </span>
+                  <span className="text-xs text-zinc-500 dark:text-white/60">
+                    GUXIUAN
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  aria-label="Close"
+                  onClick={() => setOpen(false)}
+                  className="rounded-full border border-zinc-950/10 bg-white px-3 py-1 text-xs font-semibold tracking-[0.18em] text-zinc-700 dark:border-white/12 dark:bg-zinc-950 dark:text-white/80"
+                >
+                  CLOSE
+                </button>
+              </div>
+
+              <div className="px-5 py-5 dark:bg-zinc-950">
+                <nav aria-label="Mobile navigation" className="space-y-2">
+                  {NAV.map((item) => (
+                    <MobileNavItem
+                      key={item.href}
+                      href={item.href}
+                      labelEn={item.labelEn}
+                      labelZh={item.labelZh}
+                      active={pathname === item.href}
+                      onNavigate={() => setOpen(false)}
+                    />
+                  ))}
+                </nav>
+              </div>
+            </div>
+          </div>
+        ) : null}
+      </header>
+
+      {contactOpen ? (
+        <div className="fixed inset-0 z-[60]">
           <button
             type="button"
-            aria-label="Close menu"
-            onClick={() => setOpen(false)}
-            className="absolute inset-0 bg-black/30"
+            aria-label="Close contact panel"
+            onClick={() => setContactOpen(false)}
+            className="absolute inset-0 bg-black/45 backdrop-blur-[1px]"
           />
-
-          <div className="absolute right-0 top-0 h-dvh w-[86%] max-w-sm border-l border-zinc-950/10 bg-white shadow-[0_30px_120px_-70px_rgba(0,0,0,0.65)]">
-            <div className="flex items-center justify-between border-b border-zinc-950/10 px-5 py-4 dark:border-white/10 dark:bg-zinc-950">
-              <div className="flex items-baseline gap-3">
-                <span className="text-xs font-semibold tracking-[0.28em] text-zinc-500 dark:text-white/60">
-                  MENU
-                </span>
-                <span className="text-xs text-zinc-500 dark:text-white/60">
-                  GUXIUAN
-                </span>
+          <div className="absolute left-1/2 top-1/2 w-[94vw] max-w-2xl -translate-x-1/2 -translate-y-1/2 rounded-3xl border border-zinc-950/12 bg-white p-6 shadow-[0_30px_120px_-70px_rgba(0,0,0,0.75)] dark:border-white/12 dark:bg-zinc-950 sm:p-7">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-xs font-semibold tracking-[0.28em] text-zinc-500 dark:text-white/60">
+                  CONTACT
+                </p>
+                <p className="mt-1 text-lg font-semibold text-zinc-950 dark:text-white">
+                  联系我
+                </p>
               </div>
               <button
                 type="button"
-                aria-label="Close"
-                onClick={() => setOpen(false)}
-                className="rounded-full border border-zinc-950/10 bg-white px-3 py-1 text-xs font-semibold tracking-[0.18em] text-zinc-700 dark:border-white/12 dark:bg-zinc-950 dark:text-white/80"
+                onClick={() => setContactOpen(false)}
+                className="rounded-full border border-zinc-950/10 bg-white px-3 py-1 text-xs font-semibold tracking-[0.18em] text-zinc-700 hover:bg-zinc-50 dark:border-white/12 dark:bg-zinc-950 dark:text-white/80 dark:hover:bg-zinc-900"
               >
                 CLOSE
               </button>
             </div>
 
-            <div className="px-5 py-5 dark:bg-zinc-950">
-              <nav aria-label="Mobile navigation" className="space-y-2">
-                {NAV.map((item) => (
-                  <MobileNavItem
-                    key={item.href}
-                    href={item.href}
-                    labelEn={item.labelEn}
-                    labelZh={item.labelZh}
-                    active={pathname === item.href}
-                    onNavigate={() => setOpen(false)}
-                  />
-                ))}
-              </nav>
+            <div className="mt-5 rounded-2xl border border-zinc-950/10 bg-zinc-50/60 p-4 dark:border-white/10 dark:bg-zinc-900/60">
+              <p className="text-xs font-semibold tracking-[0.2em] text-zinc-500 dark:text-white/60">
+                EMAIL
+              </p>
+              <div className="mt-2 flex items-center justify-between gap-3">
+                <a
+                  href={`mailto:${socialConfig.email}`}
+                  className="min-w-0 truncate text-base font-semibold text-zinc-900 hover:underline dark:text-white"
+                >
+                  {socialConfig.email}
+                </a>
+                <CopyButton value={socialConfig.email} />
+              </div>
+            </div>
+
+            <div className="mt-4">
+              <p className="text-xs font-semibold tracking-[0.2em] text-zinc-500 dark:text-white/60">
+                SOCIAL
+              </p>
+              <div className="mt-3 grid grid-cols-3 gap-3 sm:gap-4">
+                <SocialLinkCard
+                  href={socialConfig.xiaohongshu.url}
+                  label={socialConfig.xiaohongshu.name}
+                  handle={socialConfig.xiaohongshu.handle}
+                  icon={<XiaohongshuIcon />}
+                />
+                <SocialLinkCard
+                  href={socialConfig.douyin.url}
+                  label={socialConfig.douyin.name}
+                  handle={socialConfig.douyin.handle}
+                  icon={<DouyinIcon />}
+                />
+                <SocialLinkCard
+                  href={socialConfig.bilibili.url}
+                  label={socialConfig.bilibili.name}
+                  handle={socialConfig.bilibili.handle}
+                  icon={<BilibiliIcon />}
+                />
+              </div>
             </div>
           </div>
         </div>
       ) : null}
-    </header>
+    </>
   );
 }
 
@@ -160,5 +265,98 @@ function MobileNavItem({
         →
       </span>
     </Link>
+  );
+}
+
+function MailIcon() {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path
+        d="M4 7.5C4 6.67157 4.67157 6 5.5 6H18.5C19.3284 6 20 6.67157 20 7.5V16.5C20 17.3284 19.3284 18 18.5 18H5.5C4.67157 18 4 17.3284 4 16.5V7.5Z"
+        stroke="currentColor"
+        strokeWidth="1.6"
+      />
+      <path
+        d="M5 8L11.17 12.115C11.6732 12.4505 12.3268 12.4505 12.83 12.115L19 8"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+function XiaohongshuIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="size-9" aria-hidden="true">
+      <rect x="1.5" y="1.5" width="21" height="21" rx="6" fill="#FF2442" />
+      <path
+        d="M6.5 8.5H17.5M6.5 12H17.5M6.5 15.5H14.5"
+        stroke="white"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+function DouyinIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="size-9" aria-hidden="true">
+      <rect x="1.5" y="1.5" width="21" height="21" rx="6" fill="#111111" />
+      <path
+        d="M13 6.8C14 8.2 15.3 9 17 9.2V11C15.6 10.9 14.4 10.4 13.4 9.7V14.2C13.4 16.4 11.7 18 9.6 18C7.6 18 6 16.5 6 14.6C6 12.7 7.6 11.2 9.6 11.2C10 11.2 10.4 11.3 10.7 11.4V13.3C10.4 13.1 10.1 13 9.8 13C8.9 13 8.2 13.7 8.2 14.6C8.2 15.5 8.9 16.2 9.8 16.2C10.8 16.2 11.4 15.5 11.4 14.5V6H13V6.8Z"
+        fill="#18F4FF"
+      />
+      <path
+        d="M12.2 7.2C13.2 8.6 14.5 9.4 16.2 9.6V11.4C14.8 11.3 13.6 10.8 12.6 10.1V14.6C12.6 16.8 10.9 18.4 8.8 18.4C7.9 18.4 7.1 18.1 6.5 17.5C7.2 17.9 8 18.2 8.8 18.2C10.9 18.2 12.6 16.6 12.6 14.4V9.9C13.6 10.6 14.8 11.1 16.2 11.2V9.4C14.5 9.2 13.2 8.4 12.2 7V7.2Z"
+        fill="#FE2C55"
+      />
+    </svg>
+  );
+}
+
+function BilibiliIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="size-9" aria-hidden="true">
+      <rect x="1.5" y="3" width="21" height="18" rx="5" fill="#00A1D6" />
+      <rect x="5.5" y="7.5" width="13" height="9" rx="2.2" fill="white" />
+      <path d="M8 6L6.8 4.8M16 6L17.2 4.8" stroke="#00A1D6" strokeWidth="1.5" strokeLinecap="round" />
+      <circle cx="10.1" cy="11.9" r="0.95" fill="#00A1D6" />
+      <circle cx="13.9" cy="11.9" r="0.95" fill="#00A1D6" />
+      <path d="M9.4 14.1H14.6" stroke="#00A1D6" strokeWidth="1.2" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function SocialLinkCard({
+  href,
+  label,
+  handle,
+  icon,
+}: {
+  href: string;
+  label: string;
+  handle: string;
+  icon: React.ReactNode;
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      className="group rounded-2xl border border-zinc-950/10 bg-white p-3 transition hover:-translate-y-0.5 hover:border-zinc-950/18 hover:bg-zinc-50 dark:border-white/10 dark:bg-zinc-900/50 dark:hover:bg-zinc-900"
+    >
+      {icon}
+      <p className="mt-2 text-xs font-semibold text-zinc-900 dark:text-white/90">{label}</p>
+      <p className="mt-1 truncate text-[11px] text-zinc-500 dark:text-white/60">{handle}</p>
+    </a>
   );
 }
