@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -193,19 +194,19 @@ export function SiteNav() {
                   href={socialConfig.xiaohongshu.url}
                   label={socialConfig.xiaohongshu.name}
                   handle={socialConfig.xiaohongshu.handle}
-                  icon={<XiaohongshuIcon />}
+                  icon={<PlatformIconImage src="/social-icons/xiaohongshu.png" alt="小红书" />}
                 />
                 <SocialLinkCard
                   href={socialConfig.douyin.url}
                   label={socialConfig.douyin.name}
                   handle={socialConfig.douyin.handle}
-                  icon={<DouyinIcon />}
+                  icon={<PlatformIconImage src="/social-icons/douyin.png" alt="抖音" />}
                 />
                 <SocialLinkCard
                   href={socialConfig.bilibili.url}
                   label={socialConfig.bilibili.name}
                   handle={socialConfig.bilibili.handle}
-                  icon={<BilibiliIcon />}
+                  icon={<PlatformIconImage src="/social-icons/bilibili.png" alt="B站" />}
                 />
               </div>
             </div>
@@ -293,46 +294,11 @@ function MailIcon() {
   );
 }
 
-function XiaohongshuIcon() {
+function PlatformIconImage({ src, alt }: { src: string; alt: string }) {
   return (
-    <svg viewBox="0 0 24 24" className="size-9" aria-hidden="true">
-      <rect x="1.5" y="1.5" width="21" height="21" rx="6" fill="#FF2442" />
-      <path
-        d="M6.5 8.5H17.5M6.5 12H17.5M6.5 15.5H14.5"
-        stroke="white"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-function DouyinIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="size-9" aria-hidden="true">
-      <rect x="1.5" y="1.5" width="21" height="21" rx="6" fill="#111111" />
-      <path
-        d="M13 6.8C14 8.2 15.3 9 17 9.2V11C15.6 10.9 14.4 10.4 13.4 9.7V14.2C13.4 16.4 11.7 18 9.6 18C7.6 18 6 16.5 6 14.6C6 12.7 7.6 11.2 9.6 11.2C10 11.2 10.4 11.3 10.7 11.4V13.3C10.4 13.1 10.1 13 9.8 13C8.9 13 8.2 13.7 8.2 14.6C8.2 15.5 8.9 16.2 9.8 16.2C10.8 16.2 11.4 15.5 11.4 14.5V6H13V6.8Z"
-        fill="#18F4FF"
-      />
-      <path
-        d="M12.2 7.2C13.2 8.6 14.5 9.4 16.2 9.6V11.4C14.8 11.3 13.6 10.8 12.6 10.1V14.6C12.6 16.8 10.9 18.4 8.8 18.4C7.9 18.4 7.1 18.1 6.5 17.5C7.2 17.9 8 18.2 8.8 18.2C10.9 18.2 12.6 16.6 12.6 14.4V9.9C13.6 10.6 14.8 11.1 16.2 11.2V9.4C14.5 9.2 13.2 8.4 12.2 7V7.2Z"
-        fill="#FE2C55"
-      />
-    </svg>
-  );
-}
-
-function BilibiliIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="size-9" aria-hidden="true">
-      <rect x="1.5" y="3" width="21" height="18" rx="5" fill="#00A1D6" />
-      <rect x="5.5" y="7.5" width="13" height="9" rx="2.2" fill="white" />
-      <path d="M8 6L6.8 4.8M16 6L17.2 4.8" stroke="#00A1D6" strokeWidth="1.5" strokeLinecap="round" />
-      <circle cx="10.1" cy="11.9" r="0.95" fill="#00A1D6" />
-      <circle cx="13.9" cy="11.9" r="0.95" fill="#00A1D6" />
-      <path d="M9.4 14.1H14.6" stroke="#00A1D6" strokeWidth="1.2" strokeLinecap="round" />
-    </svg>
+    <span className="grid size-10 place-items-center overflow-hidden rounded-xl border border-zinc-950/10 bg-white dark:border-white/14 dark:bg-zinc-900">
+      <Image src={src} alt={alt} width={32} height={32} className="rounded-md" unoptimized />
+    </span>
   );
 }
 
